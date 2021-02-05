@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularHomeWork';
+
+  // tslint:disable-next-line:typedef
+  onInputAction(){
+    console.log(this.title);
+  }
 }
