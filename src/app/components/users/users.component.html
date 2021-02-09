@@ -1,0 +1,31 @@
+<form [formGroup]="myForm" (ngSubmit)="add(myForm)">
+  <div>
+    <label>
+      Name:
+      <input [formControl]="name">
+    </label>
+    <div *ngIf="!!myForm.controls.name.errors?.minlength?.requiredLength">
+      Min Name Length- {{myForm.controls.name.errors?.minlength?.requiredLength}}
+    </div>
+  </div>
+
+
+  <label>Age:
+    <input [formControl]="age" type="number">
+  </label>
+  <div *ngIf="!!myForm.controls.age.errors?.min?.min">
+    Minimum Age- {{myForm.controls.age.errors?.min?.min}}
+  </div>
+  <div *ngIf="!!myForm.controls.age.errors?.max?.max">
+    Maximum Age- {{myForm.controls.age.errors?.max?.max}}
+  </div>
+  <button [disabled]="!myForm.valid">Add</button>
+</form>
+
+<div *ngIf="!!myForm.controls.name.errors">{{myForm.controls.name.errors.msg}}</div>
+
+<div>
+  <app-user *ngFor="let user of users" [user]="user"></app-user>
+</div>
+
+
